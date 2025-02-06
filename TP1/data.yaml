@@ -1,0 +1,29 @@
+---
+
+zone_dns:
+- nom: DNS-1
+  ip: 10.20.20.10
+  ipv6: 2001:db8::10
+  isAuthoritative: True
+
+- nom: DNS-2
+  ip: 10.20.20.11
+  ipv6: 2001:db8::11
+  isAuthoritative: True
+
+- nom: WEB-1
+  ip: 10.20.20.51
+  ipv6: 2001:db8::51
+  isAuthoritative: False
+
+- nom: WEB-2
+  ip: 10.20.20.52
+  ipv6: 2001:db8::52
+  isAuthoritative: False
+
+- nom: LB-1
+  ip: 10.20.20.20
+  ipv6: 2001:db8::20
+  isAuthoritative: False
+
+zone: lab.lan

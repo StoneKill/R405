@@ -1,0 +1,13 @@
+$TTL 2H
+@    IN    SOA    {{ zone }}.  yanis.outlook.fr. (
+    1            ; Serial
+    300          ; Refresh
+    600          ; Retry
+    900          ; Expire - 1 week
+    800          ; Minimum
+)
+{% for pc in zone_dns %}
+{{ pc.nom }} IN A {{ pc.ip }}
+{{ pc.nom }} IN AAAA {{ pc.ipv6 }}{% if pc.isAuthoritative %}
+@ IN NS {{ pc.nom }}{% endif %}
+{% endfor %}

@@ -1,0 +1,25 @@
+$TTL 2H
+@    IN    SOA    lab.lan.  yanis.outlook.fr. (
+    1            ; Serial
+    300          ; Refresh
+    600          ; Retry
+    900          ; Expire - 1 week
+    800          ; Minimum
+)
+
+DNS-1 IN A 10.20.20.10
+DNS-1 IN AAAA 2001:db8::10
+@ IN NS DNS-1
+
+DNS-2 IN A 10.20.20.11
+DNS-2 IN AAAA 2001:db8::11
+@ IN NS DNS-2
+
+WEB-1 IN A 10.20.20.51
+WEB-1 IN AAAA 2001:db8::51
+
+WEB-2 IN A 10.20.20.52
+WEB-2 IN AAAA 2001:db8::52
+
+LB-1 IN A 10.20.20.20
+LB-1 IN AAAA 2001:db8::20
