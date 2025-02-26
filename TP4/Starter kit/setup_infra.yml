@@ -14,12 +14,22 @@
       name: bind9
       state: present
 
-- name: Configuration des paramètres DNS de toute les machines
+
+  - name: Enregistrement de la date
+    ansible.builtin.shell: date +%s&
+    register: timestamp
+  run_once: true
+
+
+
+
+
+
+- name: Utilisation du playbook du professeur
   hosts: all
   remote_user: root
 
   tasks:
-  - name: Utilisation du playbook du professeur
-    import_tasks: "tasks/set_dns.yml"
+    - import_tasks: "tasks/set_dns.yml"
 
         

@@ -1,0 +1,15 @@
+$TTL 2H
+@    IN    SOA    {{ domaine_lab }}.  {{ groups['dns']|first }}. (
+    {{ timestamp.stdout }}            ; Serial
+    300          ; Refresh
+    600          ; Retry
+    900          ; Expire - 1 week
+    800          ; Minimum
+)
+@   IN  NS  
+
+{% for hote in groups['all'] %}
+{{ hote.nom }} IN A {{ hostvars[hote]['ansible_host'] }}{% endfor %}
+
+{% for hote in groups['dns'] %}
+@ IN NS {{ hote.nom }}{% endfor %}
