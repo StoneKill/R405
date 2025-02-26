@@ -1,5 +1,5 @@
 ---
-- name: Provisioning des machines DNS
+- name: Installation de Bind9 sur les machines DNS
   hosts: dns
   remote_user: root
 
@@ -13,3 +13,13 @@
     ansible.builtin.package:
       name: bind9
       state: present
+
+- name: Configuration des paramètres DNS de toute les machines
+  hosts: all
+  remote_user: root
+
+  tasks:
+  - name: Utilisation du playbook du professeur
+    import_tasks: "tasks/set_dns.yml"
+
+        
