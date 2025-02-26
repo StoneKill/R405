@@ -1,0 +1,15 @@
+---
+- name: Provisioning des machines DNS
+  hosts: dns
+  remote_user: root
+
+  tasks:
+  - name: Mis à jour des depots de paquets
+    ansible.builtin.apt:
+      update_cache: true
+
+
+  - name: Installation de bind9
+    ansible.builtin.package:
+      name: bind9
+      state: present
