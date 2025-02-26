@@ -20,10 +20,27 @@
     register: timestamp
     run_once: true
 
-  - name: Template jinja2
+  - name: Création du template jinja2
     ansible.builtin.template:
       src: templates/labzone.j2
-      dest: /etc/bind/named.conf.local
+      dest: /etc/bind/db.lab.lan
+
+  - name: Ajout de la déclaration de zone
+    ansible.builtin.blockinfile:
+      path: /etc/bind/named.conf.local
+      state: present
+      block: |
+        zone "lab.lan" IN {
+        type master;
+        file "/etc/bind/db.lab.lan";
+        };
+
+
+
+  - name: Redémarrage de Bind
+    ansible.builtin.service:
+      name: named
+      state: restarted
 
 
 

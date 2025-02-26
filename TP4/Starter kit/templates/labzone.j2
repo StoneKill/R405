@@ -6,8 +6,6 @@ $TTL 2H
     900          ; Expire - 1 week
     800          ; Minimum
 )
-@   IN  NS  
-
 {% for hote in groups['all'] %}
 {{ hote }} IN A {{ hostvars[hote]['ansible_host'] }}
 {% endfor %}
