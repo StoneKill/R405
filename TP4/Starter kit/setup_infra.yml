@@ -65,4 +65,10 @@
   tasks:
     - import_tasks: "tasks/loadbalancer.yml"
 
-            
+- name: Lancement du playbook pour le web
+  hosts: web
+  remote_user: root
+  tasks:
+    - import_tasks: "tasks/web.yml"
+
+                       
