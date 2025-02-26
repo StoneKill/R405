@@ -18,9 +18,12 @@
   - name: Enregistrement de la date
     ansible.builtin.shell: date +%s&
     register: timestamp
-  run_once: true
+    run_once: true
 
-
+  - name: Template jinja2
+    ansible.builtin.template:
+      src: templates/labzone.j2
+      dest: /etc/bind/named.conf.local
 
 
 
