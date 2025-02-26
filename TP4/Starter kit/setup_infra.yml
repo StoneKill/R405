@@ -52,4 +52,17 @@
   tasks:
     - import_tasks: "tasks/set_dns.yml"
 
-        
+
+- name: Lancement du playbook loadbalancer
+  hosts: lb
+  remote_user: root
+  vars: 
+    liste_modules:
+    - proxy_http
+    - proxy_http2
+    - proxy_balancer
+    - lbmethod_byrequests
+  tasks:
+    - import_tasks: "tasks/loadbalancer.yml"
+
+            
