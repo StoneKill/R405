@@ -1,0 +1,20 @@
+--- 
+- name: Installation de Apache2 et PHP 
+  ansible.builtin.apt:
+    update_cache: true
+    name: 
+      - apache2
+      - php
+    state: present
+
+- name: Supression de /var/www/html/index.html
+  ansible.builtin.file:
+    path: /var/www/html/index.html
+    state: absent
+
+- name: Copie du fichier files/index.php vers le chemin /var/www/html/index.php sur les serveurs web.
+  ansible.builtin.copy:
+    src: files/index.php
+    dest: /var/www/html/index.php
+    owner: www-data
+    group: www-data

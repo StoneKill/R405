@@ -19,6 +19,8 @@
     src: templates/lb-apache-conf.j2
     dest: /etc/apache2/sites-available/000-default.conf
     owner: www-data
+    group: www-data
+    mode: '0644'
   register: template_a2
 
 - name: Redémarrage d'Apache2

@@ -24,6 +24,9 @@
     ansible.builtin.template:
       src: templates/labzone.j2
       dest: /etc/bind/db.lab.lan
+      owner: bind
+      group: bind
+      mode: '0644'
 
   - name: Ajout de la déclaration de zone
     ansible.builtin.blockinfile:
